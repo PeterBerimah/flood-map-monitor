@@ -1,5 +1,6 @@
 class User < ApplicationRecord
   has_one :location
+  has_many :reports
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
   validates :first_name, :last_name, presence: true
