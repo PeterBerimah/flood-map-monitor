@@ -1,0 +1,8 @@
+<% if object.errors.any? %>
+    <h4>You have <%= pluralize(object.errors.size, "error") %></h4>
+    <ul>
+        <% object.errors.full_messages.each do |error| %>
+            <li><%= error %></li>
+        <% end %>
+    </ul>
+<% end %>

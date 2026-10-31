@@ -1,0 +1,30 @@
+<%= form_with(model: user) do |f| %>
+
+   <%= render "shared/errors", object: user %>
+   <%= f.label :first_name %>
+   <%= f.text_field :first_name %>
+   <br>
+   <%= f.label :middle_name %>
+   <%= f.text_field :middle_name %>
+   <br>
+   <%= f.label :last_name %>
+   <%= f.text_field :last_name %>
+   <br>
+   <%= f.label :email %>
+   <%= f.email_field :email %>
+   <br>
+   <%= f.label :mobile_number %>
+   <%= f.number_field :mobile_number %>
+   <br>
+   <%= f.label :password %>
+   <%= f.password_field :password %>
+   <br>
+   <%= f.label :password_confirmation, "Confirm Password" %>
+   <%= f.password_field :password_confirmation %>
+   <br>
+   <% if user.new_record? %>
+      <%= f.submit "Create Account" %>
+   <% else %>
+      <%= f.submit "Edit Account" %>
+   <% end %>
+<% end %>
