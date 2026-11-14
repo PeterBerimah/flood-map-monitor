@@ -1,0 +1,9 @@
+<h1>Report</h1>
+<% if @report.report_images.attached? %>
+   <% @report.report_images.each do |image| %>
+      <%= image_tag(image, size: "200x150") %><br>
+      <%= link_to image.filename.to_s, rails_blob_path(image, disposition: "attachment") %><br>
+   <% end %>
+<% end %><br>
+<%= link_to "Edit Report", edit_report_path %>
+<%= link_to "Delete Report", report_path, data: { turbo_method: :delete } %>

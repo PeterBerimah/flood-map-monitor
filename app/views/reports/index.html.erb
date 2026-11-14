@@ -1,0 +1,12 @@
+<h1>All Reports</h1>
+<% @reports.each do |r| %>
+   <%= link_to r.description, report_path(r) %><br>
+   <% if r.report_images.attached? %>
+      <% r.report_images.each do |image| %>
+         <%= image_tag(image, size: "200x150") %><br>
+         <%= link_to image.filename.to_s, rails_blob_path(image, disposition: "attachment") %><br>
+      <% end %>
+   <% end %><br>
+<% end %>
+<%= link_to "New Report", new_report_path %>
+

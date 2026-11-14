@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :signed_in, except: [ :index, :new, :create ]
-  before_action :find_user, except: [ :index, :new, :create ]
+  before_action :find_correct_user, except: [ :index ]
   def index
     @users = User.all
   end
@@ -39,9 +39,13 @@ class UsersController < ApplicationController
 
   private
 
-  def find_user
+  def find_correct_user
     @user = User.find(params[:id])
+    unless @user == current_user
+      redirect_to root_path
+    end
   end
+
   def user_params
     params.require(:user).permit(:first_name, :middle_name, :last_name, :email, :mobile_number, :password, :password_confirmation)
   end

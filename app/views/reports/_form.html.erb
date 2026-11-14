@@ -1,0 +1,13 @@
+<%= form_with(model: report) do |f| %> 
+   <%= render "shared/errors", object: report %>
+   <%= f.label :description %>
+   <%= f.textarea :description %>
+   <br>
+   <%= f.label :report_date %>
+   <%= f.date_select :report_date %>
+   <br>
+   <%= f.label :report_images %>
+   <%= f.file_field :report_images, multiple: true %>
+   <br>
+   <%= f.submit %>
+<% end %>
